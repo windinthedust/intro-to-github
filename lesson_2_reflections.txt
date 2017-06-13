@@ -1,0 +1,4 @@
+Initializing a repository creates the hidden .git files and makes git work inside that folder.  It does not create the first commit since
+the user may not want to track all of the files in the current folder.  Additionally, if it created the first commit the user wouldn't 
+be able to create a commit comment.  Therefore, git init just initializes the git structure and allows the user to start doing commits.
+The user can issue a git status to see that there are no current commits and see what files haven't been staged yet.  
