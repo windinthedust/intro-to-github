@@ -2,3 +2,8 @@ Initializing a repository creates the hidden .git files and makes git work insid
 the user may not want to track all of the files in the current folder.  Additionally, if it created the first commit the user wouldn't 
 be able to create a commit comment.  Therefore, git init just initializes the git structure and allows the user to start doing commits.
 The user can issue a git status to see that there are no current commits and see what files haven't been staged yet.  
+
+The staging area is neither the working directory nor the repository, it's a middle ground.  Granted, if a file exists in the working directory
+and its added to the staging area, they are identical.  However, unless a commit is done, the files never leave the staging area and make it to
+the repository.  I think the concept of a staging area adds the value of the user not having to commit all of the files currently in the working
+directory.  The user can pick and choose what files they want in the snapshot. 
