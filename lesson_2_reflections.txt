@@ -6,4 +6,19 @@ The user can issue a git status to see that there are no current commits and see
 The staging area is neither the working directory nor the repository, it's a middle ground.  Granted, if a file exists in the working directory
 and its added to the staging area, they are identical.  However, unless a commit is done, the files never leave the staging area and make it to
 the repository.  I think the concept of a staging area adds the value of the user not having to commit all of the files currently in the working
-directory.  The user can pick and choose what files they want in the snapshot. 
+directory.
+The user can pick and choose what files they want in the snapshot. 
+
+I've learned a few commands.  First and foremost I needed to get back to the master so I did a git branch, this showed I was not on the master.
+Then I did 'git checkout master' and that put me back on the master.  Once there I modified a file called game.js so that the player now had a 
+delay on the bullet firing.  I did a 'git diff' and this showed the differences between my working directory version and staged version (although
+it's very important to note that the file is staged, it was not ADDED onto the staging area, i.e. I had not done 'add game.js' yet).  Once I was 
+satisfied with the changes I could go ahead and 'add game.js' and then do a 'git status' to see that game.js was now green, since it was in the 
+staging area.  Once in the staging area I could see the differences between that file, game.js and what it was in the latest commit by doing a 
+'git diff --staged'.  In other words if the latest commit is commit 5, I'm comparing game.js in staging area with game.js of commit 5.  So 
+'git diff' shows the differences between working directory and changes made, 'git diff --staged' shows the differences between staged and 
+committed.  In the very rare case that I wan't to complete disregard the current changes in the working directory, I can do a 'git reset --hard' 
+but this should be used very sparingly!
+
+I can use the staging area to ensure I have one commit per logical change by only adding the file with the one logical change to the staging area
+then committing and commenting WHY that change was made.    
