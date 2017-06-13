@@ -22,3 +22,12 @@ but this should be used very sparingly!
 
 I can use the staging area to ensure I have one commit per logical change by only adding the file with the one logical change to the staging area
 then committing and commenting WHY that change was made.    
+
+Branches would be helpful for any time I want to implement a feature that might not end up in the final product.  Or if I have an idea for a feature
+but I don't know if it's going to work.  Just like in the example, we created a new branch to offer an easy-mode for the game.  The master branch 
+should always be the "production quality" branch where the program works.  The additional branches could be development work, experimental branch
+(where fully expect things to break)
+
+The diagrams help me visualize and understand the branch structure because they show the "one-way" nature of the parent child relationship, and how
+if you checkout a commit but don't actually create it as a branch, you could lose that commit when switching back to a branch.  Additionally, they 
+show how certain commits would not be viewable from certain branches.  
