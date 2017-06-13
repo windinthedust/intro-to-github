@@ -1,0 +1,67 @@
+I used the following command to see the difference between the two .js files:
+diff -u game_old.js game_new.js
+Using the command saved me a considerable amount of time because I didn't have to look through all of the lines to see the difference.
+The plus sign indicated that it was added in the new file, the minus indicated that it was missing from the new file or had been removed.
+This tool would be great to use for any plain text, so text files, WinXa config's, c sharp files, and so on.  In the future when I'm using
+more version control it will be nice to be able to use this tool and quickly understand what changes were made.  I can especially use it to
+compare a working version of the file and a non-working version of a file, just as they did here.  
+
+Having access to the entire history of a file would be very beneficial, even if I was not the author.  In fact, if I had access to the 
+history of another authors file I could see how the document grew.  If it was a program I could see how new functionality was added,
+where the program started from, if there was scope creep and so on.  This would be a great learning tool to be able to see how the 
+program in its current state came to be.  Having access to my own file history as a programmer would easily allow me to revert back 
+any features if need be.  It would also allow me to understand my own design decisions on a larger scale and how they impacted the project
+and if they were good long-term decisions for the program.  
+
+The rule of thumb for how often to commit changes is to make one commit per logical change.  This may end up being quite a few lines of code,
+however, we do not want to have a commit for every change of code as this will make the git log very long-winded.  For example, if I fix 
+a typo and then fixed a bug in a separate part of the file, this should be two commits as they are logically separate.
+
+Automatically saved documents don't require the user to think about when a good time is to save.  That is not to say that automatically saved
+documents like Google Docs are superior, just that they avoid some user error and in some cases even avoid bad user judgement such as waiting
+far too long to commit a change.  The cons to an automatically saved version control system such as google docs is that it doesn't distinguish
+between when a good time and bad time is to save.  For instance, it could save in the middle of writing a line of code.  It could even save
+when the user doesn't want it to save, perhaps the user is testing out a certain idea and doesn't want to save it. 
+
+Google docs treats each file separately because it makes sense to do so.  Often word or excel files are independent of one another.  Git, however, can and
+usually does save multiple files in one commit because the files work together to achieve a goal.  If only some of the files are saved then
+the solution may not work properly.  
+
+Git log is useful because I can see the history with a small message for each commit.  This give me an idea of what was changed, it also shows the author 
+as well as the date of the commit.  The commit has a unique identifier which I can reference with the git diff command.  I can also get more information from
+the git log by adding on a flag, --stat: git log --stat and this is very helpful.  By using the unique identifier in the git log command I can use the
+commit before ID and after ID in combination with git diff to see the differences in the files.  
+
+Note: HEAD is what git calls the commit I'm currently on.  I can detach the HEAD by switching to a previous commit.  
+
+Version control could make me more confident to make changes that could possibly break something because I know I can always look at the git log and use
+diff to see what changes were made with each commit.  Additionally I can also do a git checkout on one of the unique ID and use the working version of
+the program before I made the game-breaking change.  
+
+Using the mv command to both move and rename a file is simple.  The mv command works with whatever directory you're in, that is, it's going to move the
+file into your current working directory if the path is not passed.  So say there was a folder on my desktop called stuff and inside there is a file 
+called kevin.bat.txt and I want to move it and rename it at the same time. Lets say I'd like to just move it to the desktop.  I would navigate so 
+that I'm in the desktop folder.  Note that I can get to the root directory by just doing: cd ~
+Once I've navigated to the desktop folder I would move and rename the kevin.bat.txt file like so: mv ~/Desktop/stuff/kevin.bat.txt kevin.bat
+
+I've added the following to my .bash_profile 
+# colors!
+green="\[\033[0;32m\]"
+blue="\[\033[0;34m\]"
+purple="\[\033[0;35m\]"
+reset="\[\033[0m\]"
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+# '\u' adds the name of the current user to the prompt
+# '\$(__git_ps1)' adds git-related stuff
+# '\W' adds the name of the current directory
+export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
+
+
+
+Doing a git checkout is like doing an open on that current snapshot of all the files.  This is how you directly access older versions of the file.  Git gives a warning
+of detaching the HEAD if you do a checkout without saving that checkout but this is fine if you'd just like to take a look at an older version of the files.  It is 
+important to note that git DOES NOT change the name of the files with each commit.  Each commit is like doing a save as but somehow keeping the same name and yet not
+overwriting the previous version.  Git does not change the names, but each new commit has a new commit ID to refer to different versions of the files.  
+Another way to think of the git checkout command is that it resets all files in the directory to their state at the time of the commit checked out.  
+
