@@ -6,8 +6,7 @@ The user can issue a git status to see that there are no current commits and see
 The staging area is neither the working directory nor the repository, it's a middle ground.  Granted, if a file exists in the working directory
 and its added to the staging area, they are identical.  However, unless a commit is done, the files never leave the staging area and make it to
 the repository.  I think the concept of a staging area adds the value of the user not having to commit all of the files currently in the working
-directory.
-The user can pick and choose what files they want in the snapshot. 
+directory.  The user can pick and choose what files they want in the snapshot. 
 
 I've learned a few commands.  First and foremost I needed to get back to the master so I did a git branch, this showed I was not on the master.
 Then I did 'git checkout master' and that put me back on the master.  Once there I modified a file called game.js so that the player now had a 
@@ -17,7 +16,7 @@ satisfied with the changes I could go ahead and 'add game.js' and then do a 'git
 staging area.  Once in the staging area I could see the differences between that file, game.js and what it was in the latest commit by doing a 
 'git diff --staged'.  In other words if the latest commit is commit 5, I'm comparing game.js in staging area with game.js of commit 5.  So 
 'git diff' shows the differences between working directory and changes made, 'git diff --staged' shows the differences between staged and 
-committed.  In the very rare case that I wan't to complete disregard the current changes in the working directory, I can do a 'git reset --hard' 
+committed.  In the very rare case that I want to complete disregard the current changes in the working directory, I can do a 'git reset --hard' 
 but this should be used very sparingly!
 
 I can use the staging area to ensure I have one commit per logical change by only adding the file with the one logical change to the staging area
@@ -29,5 +28,5 @@ should always be the "production quality" branch where the program works.  The a
 (where fully expect things to break)
 
 The diagrams help me visualize and understand the branch structure because they show the "one-way" nature of the parent child relationship, and how
-if you checkout a commit but don't actually create it as a branch, you could lose that commit when switching back to a branch.  Additionally, they 
+if you checkout a commit ID but don't actually create it as a branch, you will lose that commit when switching back to a branch.  Additionally, they 
 show how certain commits would not be viewable from certain branches.  
